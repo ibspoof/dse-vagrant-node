@@ -14,7 +14,7 @@ Simple Vagrant base project to install DataStax Enterprise (DSE) as a single nod
 ## Getting Started
 1) Clone Project
 ```
-git clone https://github.com/ibspoof/dse-vagrant-single.git
+git clone https://github.com/ibspoof/dse-vagrant-node.git
 ```
 
 2) Edit `config.yaml` file with your DataStax account info and enable/disable wanted installs.
