@@ -48,7 +48,6 @@ class Downloader
         downloadFile(uri, target, basicAuth)
         displayMsg("Finished downloading DSE installer to #{target}")
 
-        exit!
     end
 
     # Check if target for installer exists
