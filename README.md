@@ -17,34 +17,34 @@ Simple Vagrant base project to install DataStax Enterprise (DSE) as a single nod
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) or other Vagrant compatible [VM service](https://www.vagrantup.com/docs/getting-started/providers.html)
 
 ### Steps
-1) Clone Project
-    ```
-    git clone https://github.com/ibspoof/dse-vagrant-node.git
-    ```
+**1) Clone Project**
+```
+git clone https://github.com/ibspoof/dse-vagrant-node.git
+```
 
-2) Edit `config.yaml` file with your DataStax account info and enable/disable wanted installs and configurations.
+**2) Edit `config.yaml` file with your DataStax account info and enable/disable wanted installs and configurations.**
 
-3) Vagrant up the box
-    ```
-    vagrant up
-    ```
+**3) Vagrant up the box**
+```
+vagrant up
+```
 
-4) Use Vagrant image
+**4) Use**
 
-    SSH Into box
-    ```
-    vagrant ssh
-    ```
+SSH Into box
+```
+vagrant ssh
+```
 
-    or check out Jupyter notebooks:
-    ```
-    http://10.10.11.10:5000/
-    ```
+or check out Jupyter notebooks:
+```
+http://10.10.11.10:5000/
+```
 
-    or connect to C* using cqlsh:
-    ```
-    cqlsh 10.10.11.10
-    ```
+or connect to C* using cqlsh:
+```
+cqlsh 10.10.11.10
+```
 
 ## Configuration
 Most of the installation configuration can be found in the config.yaml file additional `cassandra.yaml` settings can be changed in `setup/cassandra/cassandra.temp.yaml`
