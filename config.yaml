@@ -26,9 +26,9 @@ vm:
     agent:
       opcenter_ip: vmhost           # localhost = opscenter will run on local comp outside VM and auto-config will be done. Setting IP will disable auto-config
     solr:
-      enabled: true
+      enabled: false
     spark:
-      enabled: true
+      enabled: false
       worker_cores: 3
       worker_memory: 500            #in mbs
 

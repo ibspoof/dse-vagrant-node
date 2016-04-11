@@ -12,17 +12,22 @@ Simple Vagrant base project to install DataStax Enterprise (DSE) as a single nod
 - Easy to destroy and recreate a new VM w/ same settings
 
 ## Getting Started
-1) Clone Project
-```
-git clone https://github.com/ibspoof/dse-vagrant-node.git
-```
+### Prerequisites
+- [Vagrant](http://vagrantup.com) installed
+- [VirtualBox](https://www.virtualbox.org/wiki/Downloads) or other Vagrant compatible [VM service](https://www.vagrantup.com/docs/getting-started/providers.html)
 
-2) Edit `config.yaml` file with your DataStax account info and enable/disable wanted installs.
+### Steps
+1) Clone Project
+    ```
+    git clone https://github.com/ibspoof/dse-vagrant-node.git
+    ```
+
+2) Edit `config.yaml` file with your DataStax account info and enable/disable wanted installs and configurations.
 
 3) Vagrant up the box
-```
-vagrant up
-```
+    ```
+    vagrant up
+    ```
 
 4) Use Vagrant image
 
