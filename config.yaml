@@ -4,7 +4,7 @@
 vagrant:
   base_vm: ubuntu/trusty64  # base Vagrant image, currently ubuntu/debian only supported
   name: dse-vagrant         # default vm name
-  memory_size: 8000         # max memory for each VM in mb, recommended = 6000 or more
+  memory_size: 6000         # max memory for each VM in mb, recommended = 6000 or more
   cpus: 4                   # number of cpus
   exec_cap: 100             # max CPU utilization cap percentage, recommeded = 100
   ip: 10.10.11.10           # base IP
