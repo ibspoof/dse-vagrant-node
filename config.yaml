@@ -23,6 +23,7 @@ vm:
       cluster_name: DSE
       snitch: GossipingPropertyFileSnitch
       num_tokens: 64
+      seeds: self                   # self = use the vm's IP address making it a single seed
     agent:
       opcenter_ip: vmhost           # localhost = opscenter will run on local comp outside VM and auto-config will be done. Setting IP will disable auto-config
     solr:
@@ -30,10 +31,11 @@ vm:
     spark:
       enabled: false
       worker_cores: 3
-      worker_memory: 500            #in mbs
+      worker_memory: 500            # in mbs
+    start_services: true            # start dse and datastax-agent after install
 
   jupyter:              # See http://jupyter.org/ for more on Jupyter
-    enabled: true       # if enabled website can be found at IP address above at the port defined below
+    enabled: false      # if enabled website can be found at IP address above at the port defined below
     port: 5000
 
   ubuntu:
