@@ -5,9 +5,9 @@ require './setup/downloader'
 
 config = YAML.load_file('config.yaml')
 vSettings = config['vagrant']
-tasksForIntall = ['up', 'provision', 'status']
+tasksForInstall = ['up', 'provision']
 
-if tasksForIntall.include? ARGV[0]
+if tasksForInstall.include? ARGV[0]
   ## download installers
   downloader = Downloader.new(config)
   downloader.downloadDSE()
