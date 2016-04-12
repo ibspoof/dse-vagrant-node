@@ -10,9 +10,16 @@ DSE_INSTALLER_FILE="$(ls /vagrant/installers | grep $(strip_comments ${vm_dse_in
 echo "Installing DSE..."
 
 function install_dse {
+
+    if [ "$(strip_comments $vm_dse_cassandra_seeds)" == "self" ]; then
+        SEEDS=$(strip_comments ${vagrant_ip})
+    else
+        SEEDS=$(strip_comments $vm_dse_cassandra_seeds)
+    fi
+
     chmod +x ${INSTALL_DIR}/${DSE_INSTALLER_FILE}
     ${INSTALL_DIR}/${DSE_INSTALLER_FILE} --mode unattended --update_system 0 \
-        --seeds $(strip_comments ${vagrant_ip}) --interface $(strip_comments ${vagrant_ip}) \
+        --seeds ${SEEDS} --interface $(strip_comments ${vagrant_ip}) \
         --start_services 0 --cassandra_yaml_template ${SETUP_DIR}/cassandra/cassandra.temp.yaml
 }
 
@@ -68,5 +75,7 @@ if [ "$(strip_comments $vm_dse_spark_enabled)" == "true" ]; then
 fi
 
 #start dse service
-/etc/init.d/dse start
-/etc/init.d/datastax-agent start
+if [ "$(strip_comments $vm_dse_start_services)" == "true" ]; then
+    /etc/init.d/dse start
+    /etc/init.d/datastax-agent start
+fi
