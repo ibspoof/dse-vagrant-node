@@ -45,8 +45,8 @@ else
     OPSC_IP=$(strip_comments $vm_dse_agent_opcenter_ip)
 fi
 
-sed -i "s/stomp_interface: .*/stomp_interface: \"${OPSC_IP}\"/g" ${DS_AGENT}
-echo "listen_address: ${vagrant_ip}" >> ${DS_AGENT}
+sed -i "s/stomp_interface: .*/stomp_interface: ${OPSC_IP}/g" ${DS_AGENT}
+echo "listen_interface: $(strip_comments ${vagrant_ip})" >> ${DS_AGENT}
 
 
 # enable solr
