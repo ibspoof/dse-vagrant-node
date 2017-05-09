@@ -37,7 +37,7 @@ bash ${SETUP_DIR}/dse.sh
 # install cassandra python drivers
 if [ "$(strip_comments $vm_ubuntu_cassandra_python_driver)" == "true" ]; then
     echo "Installing Python drivers for Cassandra. This takes a while..."
-    pip install --quiet 'cassandra-driver==2.7.2'
+    pip install --quiet 'cassandra-driver'
 fi
 
 # install jupyter

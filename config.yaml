@@ -3,30 +3,33 @@
 ## Vagrant Settings
 vagrant:
   base_vm: ubuntu/trusty64  # base Vagrant image, currently ubuntu/debian only supported
-  name: dse-vagrant         # default vm name
+  name: dse-vagrant-50      # default vm name
   memory_size: 6000         # max memory for each VM in mb, recommended = 6000 or more
   cpus: 4                   # number of cpus
   exec_cap: 100             # max CPU utilization cap percentage, recommeded = 100
-  ip: 10.10.11.10           # base IP
-  hostname: dse
+  ip: 10.10.10.10           # base IP
+  hostname: dse-vagrant
 
 ## VM Settings
 vm:
   dse:
     install:
-      auto_download: true           # false the correct version below unattended installer must be in installers/dir
+      auto_download: false           # false the correct version below unattended installer must be in installers/dir
       username: user@example.com    # replace with Datastax Academy/Download username
       password: password            # replace with Datastax Academy/Download password
-      version: 4.8.6                # 4.8.1, 4.8.2, 4.8.5...
+      version: 5.0.8                # 4.8.1, 4.8.2, 4.8.5...
       force_reinstall: false        # setting to true will mean existing install will be overwritten during reprovision
     cassandra:                      # further settings can be changed in setup/cassandra/cassandra.temp.yaml
       cluster_name: DSE
       snitch: GossipingPropertyFileSnitch
-      num_tokens: 64
+      num_tokens: 32
       seeds: self                   # self = use the vm's IP address making it a single seed
-    agent:
+    opscenter_agent:
+      install: false
       opcenter_ip: vmhost           # localhost = opscenter will run on local comp outside VM and auto-config will be done. Setting IP will disable auto-config
     solr:
+      enabled: true
+    graph:
       enabled: false
     spark:
       enabled: false
