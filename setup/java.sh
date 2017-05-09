@@ -2,8 +2,8 @@ source /vagrant/setup/lib.sh
 
 JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jdk-8u77-linux-x64.tar.gz"
 COOKIE="Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie"
-INSTALL_TAR="/vagrant/installers/jdk-8u77-linux-x64.tar.gz"
-JDK_DIR="/opt/jdk1.8.0_77"
+INSTALL_TAR="/vagrant/installers/jdk-8u131-linux-x64.tar.gz"
+JDK_DIR="/opt/jdk1.8.0_131"
 PROFILE_PATH="/etc/profile.d/java.sh"
 
 function install_java {
