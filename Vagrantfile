@@ -11,6 +11,7 @@ if tasksForInstall.include? ARGV[0]
   ## download installers
   downloader = Downloader.new(config)
   downloader.downloadDSE()
+  downloader.downloadStudio()
 end
 
 

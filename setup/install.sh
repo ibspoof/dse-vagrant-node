@@ -11,7 +11,7 @@ dpkg-reconfigure -f noninteractive tzdata
 echo "Installing required Ubuntu packages..."
 
 apt-get update > /dev/null
-apt-get install ${vm_ubuntu_install_packages} -y > /dev/null
+apt-get install wget ${vm_ubuntu_install_packages} -y > /dev/null
 
 if [ "$(strip_comments $vm_ubuntu_upgrade_packages)" == "true" ]; then
     echo "Upgrade ubuntu enabled, upgrading..."
@@ -27,12 +27,22 @@ apt-get clean -y
 
 if [ "$(strip_comments $vm_ubuntu_swap_disabled)" == "true" ]; then
     echo "Turning down swappiness..."
-    echo 'vm.swappiness = 1' >> /etc/sysctl.conf
-    echo 1 > /proc/sys/vm/swappiness
+    echo 'vm.swappiness = 1' | tee -a /etc/sysctl.conf
+    echo 'vm.max_map_count = 1048575' | tee -a /etc/sysctl.conf
+    echo 1 | tee /proc/sys/vm/swappiness
+
+    swapoff --all
+    sysctl -p
 fi
 
 # install DSE
 bash ${SETUP_DIR}/dse.sh
+
+# install studio
+bash ${SETUP_DIR}/studio.sh
+
+# install opscenter agent
+bash ${SETUP_DIR}/ops_agent.sh
 
 # install cassandra python drivers
 if [ "$(strip_comments $vm_ubuntu_cassandra_python_driver)" == "true" ]; then
@@ -40,12 +50,7 @@ if [ "$(strip_comments $vm_ubuntu_cassandra_python_driver)" == "true" ]; then
     pip install --quiet 'cassandra-driver==2.7.2'
 fi
 
-# install jupyter
-if [ "$(strip_comments $vm_jupyter_enabled)" == "true" ]; then
-    bash ${SETUP_DIR}/jupyter.sh
-fi
-
 # add cassandra to hosts
-echo "$(strip_comments ${vagrant_ip}) cassandra" >> /etc/hosts
+echo "$(strip_comments ${vagrant_ip}) cassandra" | tee -a /etc/hosts
 
 echo "Finished installing and configuring VM."

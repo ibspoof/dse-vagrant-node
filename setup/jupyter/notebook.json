@@ -1,8 +1,0 @@
-{
-  "load_extensions": {
-    "usability/collapsible_headings/main": true
-  },
-  "collapsible_headings_toggle_color": "#33c9db",
-  "collapsible_headings_make_toggle_controls_buttons": true,
-  "collapsible_headings_add_button": false
-}

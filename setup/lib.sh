@@ -24,5 +24,9 @@ function strip_comments {
     echo "${1%%#*}"
 }
 
+function str_replace {
+    sed --follow-symlinks -i '$1' $2
+}
+
 # Load YAML configs
 eval $(parse_yaml $YAML_FILE)
