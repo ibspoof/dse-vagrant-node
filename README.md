@@ -1,7 +1,7 @@
 # DSE Vagrant Single Node
-Simple Vagrant base project to install DataStax Enterprise (DSE) as a single node with optional Jupyter and other settings.
+Simple Vagrant base project to install DataStax Enterprise (DSE) 5.1 as a single node with optional DataStax Studio and other settings.
 
- The goal of this project is to enable a quick setup of DSE with ability to develop against and access a DSE server in a VM from the local box.
+The goal of this project is to enable a quick setup of DSE with ability to develop against and access a DSE server in a VM from the local box.
 
 ## Features
 - Install and settings configured by single `config.yaml` file
@@ -36,35 +36,36 @@ SSH Into box
 vagrant ssh
 ```
 
-or check out Jupyter notebooks:
+or check out DataStax Studio:
 ```
-http://10.10.11.10:5000/
+http://10.10.10.10:9109
 ```
 
 or connect to C* using cqlsh:
 ```
-cqlsh 10.10.11.10
+cqlsh 10.10.10.10
+```
+
+or once sshed in cqlsh:
+```
+cqlsh 10.10.10.10  or  cqlsh casssandra
 ```
 
 ## Configuration
-Most of the installation configuration can be found in the config.yaml file additional `cassandra.yaml` settings can be changed in `setup/cassandra/cassandra.temp.yaml`
+Installation configuration can be found in the `config.yaml` file
 
 ### Defaults
 - IP Address: 10.10.11.10
-  - Can be acccessed from local machine i.e. `cqlsh 10.10.11.10`
-- Jupyter Server: http://10.10.11.10:5000/
-- Solr/Spark: disabled
+  - Can be acccessed from local machine i.e. `cqlsh 10.10.10.10`
+- DataStax Studio 2.0: http://10.10.10.10:9091/
+- Solr/Spark/Graph: disabled
 - Cluster Name: DSE
 - Snitch: GossipingPropertyFileSnitch
 - DC: DC1
-
-
-### Jupyter
-If Jupyter is enabled it can be accessed at http://10.10.11.10:5000/ and configuration of nbextensions is at http://10.10.11.10:5000/nbextensions
+- OpsCenter Agent: disabled
 
 ### Customizing Installs
 All setup files can be found in the `setup/` directory and named accordingly.  Other than the downloading of DSE unattended installer script which is Ruby all scripts are done in bash.
 
 ## Special Notes
 - Inspired by Brian Cantoni's [vagrant-cassandra](https://github.com/bcantoni/vagrant-cassandra) project.
-- Special thanks to Steven Lowenthal [@slowenthal](https://github.com/slowenthal) for his work on Jupyter kernals for [CQL](https://github.com/slowenthal/cql_kernel) and [DSE Spark](https://github.com/slowenthal/spark-kernel)
