@@ -13,12 +13,12 @@ function install_java {
 
     if [ ! -f ${INSTALL_TAR} ]; then
         echo "Oracle JDK tarball not found, downloading from Oracle..."
-        wget --quite --no-cookies --no-check-certificate -O ${INSTALL_TAR} --header "${COOKIE}" "${JDK_URL}"
+        wget --quiet --no-cookies --no-check-certificate -O ${INSTALL_TAR} --header "${COOKIE}" "${JDK_URL}"
     fi
 
     if [ "${INSTALL_TAR_SIZE}" -lt "500" ]; then
         echo "Oracle JDK tarball not valid, re-downloading from Oracle..."
-        wget --quite --no-cookies --no-check-certificate -O ${INSTALL_TAR} --header "${COOKIE}" "${JDK_URL}"
+        wget --quiet --no-cookies --no-check-certificate -O ${INSTALL_TAR} --header "${COOKIE}" "${JDK_URL}"
     fi
 
     echo "Expanding JDK tarball and setting path location..."
