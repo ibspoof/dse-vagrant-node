@@ -11,6 +11,7 @@ dpkg-reconfigure -f noninteractive tzdata
 echo "Installing required Ubuntu packages..."
 
 apt-get update > /dev/null
+echo "Running: apt-get install wget ${vm_ubuntu_install_packages} -y"
 apt-get install wget ${vm_ubuntu_install_packages} -y > /dev/null
 
 if [ "$(strip_comments $vm_ubuntu_upgrade_packages)" == "true" ]; then
@@ -19,7 +20,18 @@ if [ "$(strip_comments $vm_ubuntu_upgrade_packages)" == "true" ]; then
 fi
 
 # install latest java
-bash ${SETUP_DIR}/java.sh
+if [[ "${vm_ubuntu_install_oracle_jdk}" == "yes" ]]; then
+  echo "Installing Oracle Java"
+  bash ${SETUP_DIR}/java.sh
+else
+  echo "Adding backport repro"
+  add-apt-repository ppa:openjdk-r/ppa 2> /dev/null
+  apt-get update 2> /dev/null
+  echo "Installing OpenJDK"
+  apt-get install ${vm_ubuntu_openjdk_packages} -y > /dev/null
+  update-alternatives --config java >/dev/null
+  update-alternatives --config javac >/dev/null
+fi
 
 # clean the house
 apt-get autoremove -y
