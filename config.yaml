@@ -15,8 +15,8 @@ vm:
   dse:
     install:
       auto_download: true           # false the correct version below unattended installer must be in installers/dir
-      username: test@user.com       # replace with Datastax Academy/Download username
-      password: password            # replace with Datastax Academy/Download password
+      username: foo@example.com     # replace with Datastax Academy/Download username
+      password: example             # replace with Datastax Academy/Download password
       version: 5.1.x                # 4.8.1, 4.8.2, 4.8.5...
       force_reinstall: false        # setting to true will mean existing install will be overwritten during reprovision
     cassandra:                      # further settings can be changed in setup/cassandra/cassandra.temp.yaml
@@ -48,3 +48,6 @@ vm:
     install_packages: "vim sysstat htop"
     cassandra_python_driver: false
     swap_disabled: true
+
+## jdk_provder: valid options are open_jdk and oracle_jdk
+jdk_provider: open_jdk
