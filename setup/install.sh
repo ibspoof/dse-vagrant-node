@@ -11,7 +11,6 @@ dpkg-reconfigure -f noninteractive tzdata
 echo "Installing required Ubuntu packages..."
 
 apt-get update > /dev/null
-echo "Running: apt-get install wget ${vm_ubuntu_install_packages} -y"
 apt-get install wget ${vm_ubuntu_install_packages} -y > /dev/null
 
 if [ "$(strip_comments $vm_ubuntu_upgrade_packages)" == "true" ]; then
@@ -20,7 +19,6 @@ if [ "$(strip_comments $vm_ubuntu_upgrade_packages)" == "true" ]; then
 fi
 
 # install latest java
-echo "============ ${jdk_provider} ----"
 if [[ "${jdk_provider}" == "oracle_jdk"* ]]; then
   echo "Installing Oracle Java"
   bash ${SETUP_DIR}/java.sh
