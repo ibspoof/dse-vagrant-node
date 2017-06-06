@@ -28,7 +28,7 @@ else
   add-apt-repository ppa:openjdk-r/ppa 2> /dev/null
   apt-get update 2> /dev/null
   echo "Installing OpenJDK-8"
-  apt-get install ${vm_ubuntu_openjdk_packages} -y > /dev/null
+  apt-get install ${jdk_provider} -y > /dev/null
   update-alternatives --config java >/dev/null
   update-alternatives --config javac >/dev/null
 fi
