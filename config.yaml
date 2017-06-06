@@ -46,8 +46,8 @@ vm:
   ubuntu:
     upgrade_packages: false  # will run aptitude upgrade
     install_packages: "vim sysstat htop"
-    #install_oracle_jdk: false
-    #openjdk_packages: "openjdk-8-jdk"
     cassandra_python_driver: false
     swap_disabled: true
-  jdk_provider: open_jdk # could also be oracle_jdk
+
+## jdk_provder: valid options are open_jdk and oracle_jdk
+jdk_provider: open_jdk
