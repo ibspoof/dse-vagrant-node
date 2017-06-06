@@ -17,7 +17,7 @@ vm:
       auto_download: true           # false the correct version below unattended installer must be in installers/dir
       username: foo@example.com     # replace with Datastax Academy/Download username
       password: example             # replace with Datastax Academy/Download password
-      version: 5.1.1                # 4.8.1, 4.8.2, 4.8.5...
+      version: 5.1.x                # 4.8.1, 4.8.2, 4.8.5...
       force_reinstall: false        # setting to true will mean existing install will be overwritten during reprovision
     cassandra:                      # further settings can be changed in setup/cassandra/cassandra.temp.yaml
       cluster_name: DSE
@@ -35,7 +35,7 @@ vm:
     opscenter_agent:
       install: false
       opcenter_ip: vmhost           # localhost = opscenter will run on local comp outside VM and auto-config will be done. Setting IP will disable auto-config
-      version: 6.1.0
+      version: 6.1.x
     start_services: true            # start dse and datastax-agent after install
 
   studio:
@@ -46,7 +46,8 @@ vm:
   ubuntu:
     upgrade_packages: false  # will run aptitude upgrade
     install_packages: "vim sysstat htop"
-    install_oracle_jdk: false
-    openjdk_packages: "openjdk-8-jdk"
+    #install_oracle_jdk: false
+    #openjdk_packages: "openjdk-8-jdk"
     cassandra_python_driver: false
     swap_disabled: true
+  jdk_provider: open_jdk # could also be oracle_jdk

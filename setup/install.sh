@@ -20,14 +20,14 @@ if [ "$(strip_comments $vm_ubuntu_upgrade_packages)" == "true" ]; then
 fi
 
 # install latest java
-if [[ "${vm_ubuntu_install_oracle_jdk}" == "yes" ]]; then
+if [[ "${jdk_provider}" == "oracle_jdk" ]]; then
   echo "Installing Oracle Java"
   bash ${SETUP_DIR}/java.sh
 else
   echo "Adding backport repro"
   add-apt-repository ppa:openjdk-r/ppa 2> /dev/null
   apt-get update 2> /dev/null
-  echo "Installing OpenJDK"
+  echo "Installing OpenJDK-8"
   apt-get install ${vm_ubuntu_openjdk_packages} -y > /dev/null
   update-alternatives --config java >/dev/null
   update-alternatives --config javac >/dev/null
