@@ -42,7 +42,7 @@ class Downloader
 
         targetFile = @@installerDir + @@getDseVersion
 
-        if auto_download != true && !checkForInstaller(targetFile)
+        if auto_download != true && !File.exist?(targetFile)
             displayMsg("ERROR: auto_download is turned off and installer file <#{@@getDseVersion}> does not exist." +
                        "\nPlease download unattended installer manually and place in installers directory. " +
                        "\nExiting. \n\n")
