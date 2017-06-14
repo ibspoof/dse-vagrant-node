@@ -53,4 +53,10 @@ fi
 # add cassandra to hosts
 echo "$(strip_comments ${vagrant_ip}) cassandra" | tee -a /etc/hosts
 
+# add cassandra to cqlshrc
+mkdir -p /home/vagrant/.cassandra/
+echo  "[connection]" | tee -a /home/vagrant/.cassandra/cqlshrc
+echo  "hostname = $(strip_comments ${vagrant_ip})" | tee -a /home/vagrant/.cassandra/cqlshrc
+chown -R vagrant:vagrant /home/vagrant/.cassandra/
+
 echo "Finished installing and configuring VM."
